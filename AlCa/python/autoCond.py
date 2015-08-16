@@ -12,8 +12,12 @@ autoCond = {
     # GlobalTag for running HLT on recent data: this should be the GR_P (prompt reco) global tag until a compatible GR_H tag is available,
     # then it should point to the GR_H tag and override the connection string and pfnPrefix for use offline
     'hltonline'         :   'GR_P_V43D::All',
+    'design'            :   'DESIGN53_V15::All',
 }
 
+customConditions = (
+    'CastorSaturationCorrs_v1.00_mc,CastorSaturationCorrsRcd,frontier://FrontierProd/CMS_COND_HCAL_000',
+)
 
 # L1 configuration used during Run2011
 conditions_L1_Run2011 = (
@@ -110,6 +114,7 @@ conditions_HLT_JECs = (
     'JetCorrectorParametersCollection_AK5PFchs_2012_V8_hlt_mc,JetCorrectionsRecord,frontier://FrontierProd/CMS_COND_31X_PHYSICSTOOLS,AK5PFchsHLT',
 )
 
+autoCond['design_custom'] = ( autoCond['design'], ) + customConditions
 
 # dedicated GlobalTags for MC production with the frozen HLT menus
 autoCond['startup_2011']   = ( "START53_LV2::All", )
